@@ -14,4 +14,4 @@ phases:
         "$API_BASE_URL" > dist/config.js
   post_build:
     commands:
-      - aws s3 sync dist s3://$voting-site-26mce006 --delete
+      - aws s3 sync dist s3://$WEBSITE_BUCKET --delete

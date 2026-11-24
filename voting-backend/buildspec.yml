@@ -11,7 +11,7 @@ phases:
       - zip -r ../voting-backend.zip src db scripts package.json package-lock.json
   post_build:
     commands:
-      - aws s3 cp ../voting-backend.zip s3://$voting-artifact-26mce006/voting-backend.zip
+      - aws s3 cp ../voting-backend.zip s3://$ARTIFACT_BUCKET/voting-backend.zip
       - >-
         aws autoscaling start-instance-refresh
         --auto-scaling-group-name voting-api-asg
