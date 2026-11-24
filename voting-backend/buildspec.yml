@@ -1,0 +1,18 @@
+version: 0.2
+ 
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+  build:
+    commands:
+      - cd voting-backend
+      - npm ci --omit=dev
+      - zip -r ../voting-backend.zip src db scripts package.json package-lock.json
+  post_build:
+    commands:
+      - aws s3 cp ../voting-backend.zip s3://$voting-artifact-26mce006/voting-backend.zip
+      - >-
+        aws autoscaling start-instance-refresh
+        --auto-scaling-group-name voting-api-asg
+        --preferences '{"MinHealthyPercentage":50,"InstanceWarmup":180}'
