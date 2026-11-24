@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": "http://voting-alb-987968332.us-east-1.elb.amazonaws.com",
     },
   },
 });
