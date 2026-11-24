@@ -92,9 +92,3 @@ jobs:
         run: |
           aws s3 cp voting-backend.zip \
             s3://${{ vars.ARTIFACT_BUCKET }}/voting-backend.zip
-
-      - name: Refresh backend Auto Scaling Group
-        run: |
-          aws autoscaling start-instance-refresh \
-            --auto-scaling-group-name voting-api-asg \
-            --preferences '{"MinHealthyPercentage":50,"InstanceWarmup":180}'
