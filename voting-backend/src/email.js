@@ -14,7 +14,7 @@ async function sendOtpEmail(to, code, purpose) {
   const text =
     "Your one-time code is: " + code + "\n\n" +
     "It is valid for 5 minutes and can be used once.\n" +
-    "If you did not request this code, you can ignore this email.";
+    "If you did not request this code, you can ignore this email, Testing pipeline.";
 
   if (config.emailMode === "console") {
     console.log("[DEV EMAIL] To: " + to + " | " + subject + " | OTP: " + code);
